@@ -1,0 +1,9 @@
+<svg width="188" height="52" viewBox="0 0 188 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="188" height="52" rx="10" fill="#121212"/>
+  <path d="M18 14H44V19H34V38H28V19H18V14Z" fill="#F2F2F2"/>
+  <path d="M48 14H54V38H48V14Z" fill="#F2F2F2"/>
+  <path d="M59 14H65L76 30.5V14H82V38H76L65 21.5V38H59V14Z" fill="#F2F2F2"/>
+  <path d="M87 14H93V38H87V14Z" fill="#F2F2F2"/>
+  <path d="M98 14H120V19H112V38H106V19H98V14Z" fill="#F2F2F2"/>
+  <text x="126" y="31" fill="#C7A86B" font-family="Arial, sans-serif" font-size="18" font-weight="700">GS</text>
+</svg>
