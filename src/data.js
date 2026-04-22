@@ -5,6 +5,24 @@ import maxLogo from './assets/max-logo.png';
 import telegramLogo from './assets/telegram-logo.png';
 import vkLogo from './assets/vk-logo.png';
 import whatsappLogo from './assets/wa-logo.jpg';
+import hallwayCover from '../public/images/hallway-cover.png'
+import wardrobeCover from '../public/images/wardrobe-cover.png'
+import bedroomCover from '../public/images/bedroom-cover.png'
+import kidsRoomCover from '../public/images/kids-room-cover.png'
+import bathroomCover from '../public/images/bathroom-cover.png'
+import officeCover from '../public/images/office-cover.png'
+import garageCover from '../public/images/garage-balcony-cover.png'
+import pr1 from '../public/images/pr1.jpg'
+import pr2 from '../public/images/pr2.jpg'
+import pr3 from '../public/images/pr3.jpg'
+import pr4 from '../public/images/pr4.jpg'
+import sp1 from '../public/images/sp1.jpg'
+import sp2 from '../public/images/sp2.jpg'
+import sp3 from '../public/images/sp3.jpg'
+import sp4 from '../public/images/sp4.jpg'
+import sp5 from '../public/images/sp5.jpg'
+import sp6 from '../public/images/sp6.jpg'
+import sp7 from '../public/images/sp7.jpg'
 
 export const navItems = [
   { label: 'Каталог', href: '#catalog' },
@@ -18,73 +36,90 @@ export const roomCards = [
   {
     slug: 'hallway',
     title: 'Прихожая',
-    preview: '/images/hallway-cover.png',
+    preview: hallwayCover,
     gallery: [
       'https://titangs.ru/wp-content/uploads/2022/07/10-1-1.jpg',
       'https://titangs.ru/wp-content/uploads/2022/07/garderob_02_0000-scaled.jpg',
       'https://titangs.ru/wp-content/uploads/2022/07/gs_0001-scaled-scaled.jpg',
       'https://titangs.ru/wp-content/uploads/2022/07/korpus_3_kv_407poz3_0001-scaled-scaled.jpg',
-      'https://titangs.ru/wp-content/uploads/2025/10/g-07_0001-scaled.jpg'
+      'https://titangs.ru/wp-content/uploads/2025/10/g-07_0001-scaled.jpg',
+      pr1,
+      pr2,
+      pr3,
+      pr4  
     ],
   },
   {
     slug: 'wardrobe',
     title: 'Гардеробная',
-    preview: '/images/wardrobe-cover.png',
+    preview: wardrobeCover,
     gallery: [
-      'https://images.unsplash.com/photo-1556909206-1602a8a25f68?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&fit=crop&w=1400&q=80',
+      'https://titangs.ru/wp-content/uploads/2022/07/korpus_1_kv_121_poz_2_0001-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/korpus_2_kv_9_poz_7_0004-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/korpus_1_poz11_0002-min-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/korpus_1_poz_5_0001-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/gs_0004-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/garderobnaya-s-tumboj_0001-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/korpus_3_kv_429poz7_0001-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/garderob_01_01-scaled.jpg'
     ],
   },
   {
     slug: 'bedroom',
     title: 'Спальня',
-    preview: '/images/bedroom-cover.png',
+    preview: bedroomCover,
     gallery: [
-      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1616594039964-3bcbf2f7d1f0?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1617098474202-0d0d7f60f6d8?auto=format&fit=crop&w=1400&q=80',
+      sp1, sp2, sp3, sp4, sp5, sp6, sp7
     ],
   },
   {
     slug: 'kids-room',
     title: 'Детская',
-    preview: '/images/kids-room-cover.png',
+    preview: kidsRoomCover,
     gallery: [
-      'https://images.unsplash.com/photo-1526057565006-20beab8dd2ed?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1615529162924-f860538846b4?auto=format&fit=crop&w=1400&q=80',
+      'https://titangs.ru/wp-content/uploads/2022/07/slader_1_img_6-1.png',
+      'https://titangs.ru/wp-content/uploads/2022/07/kids_room-1_0003-min-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/kids_room2_white_0001-min-scaled-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/kids_room2_zoom-scaled-scaled.jpg'
     ],
   },
   {
     slug: 'bathroom',
     title: 'Ванная',
-    preview: '/images/bathroom-cover.png',
+    preview: bathroomCover,
     gallery: [
-      'https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1629079447777-1e605162dc8d?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1400&q=80',
+      'https://titangs.ru/wp-content/uploads/2022/07/p-2_white_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/p1-2_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/1_white_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/b-1_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/p2-3_white_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/p4-3_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/gs_0007-1.jpg'
     ],
   },
   {
     slug: 'office',
     title: 'Офис',
-    preview: '/images/office-cover.png',
+    preview: officeCover,
     gallery: [
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80',
+      'https://titangs.ru/wp-content/uploads/2022/07/r-1_white_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/rz-1_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/rz-2_0001-1.jpg'
     ],
   },
   {
     slug: 'garage-balcony',
     title: 'Гараж, балкон',
-    preview: '/images/garage-balcony-cover.png',
+    preview: garageCover,
     gallery: [
-      'https://images.unsplash.com/photo-1481277542470-605612bd2d61?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1400&q=80',
-      'https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=1400&q=80',
+      'https://titangs.ru/wp-content/uploads/2022/07/garage_03_0001-1-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/garage_04_0001-1-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/garage_05_0001-1-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2020/11/slader_1_img_9-1.png',
+      'https://titangs.ru/wp-content/uploads/2022/07/garage_06_0001-1-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/garage_01_0001-1-scaled.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/d-1_zoom_0001-1.jpg',
+      'https://titangs.ru/wp-content/uploads/2022/07/d-2_zoom_0001-1.jpg'
     ],
   },
 ]

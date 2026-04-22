@@ -18,12 +18,12 @@ function RoomPage() {
 
   return (
     <main className="room-page">
+      <Link to="/" className="room-back-link" aria-label="На главную">
+        ⟵
+      </Link>
       <div className="room-page-head">
         <h1>{room.title}</h1>
         <p>Примеры гардеробных решений для выбранного помещения.</p>
-        <Link to="/" className="back-link">
-          На главную
-        </Link>
       </div>
       <div className="room-gallery">
         {room.gallery.map((image) => (

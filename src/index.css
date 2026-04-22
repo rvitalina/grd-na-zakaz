@@ -834,10 +834,24 @@ a.site-footer__line:hover {
 
 .room-page {
   padding: clamp(20px, 4vw, 48px);
+  position: relative;
 }
 
 .room-page-head {
   margin-bottom: 20px;
+  padding-top: 44px;
+}
+
+.room-back-link {
+  position: absolute;
+  top: 12px;
+  left: clamp(20px, 4vw, 48px);
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--titan-navy);
+  background: transparent;
+  text-decoration: none;
 }
 
 .room-page h1 {
