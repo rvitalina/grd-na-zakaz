@@ -23,6 +23,7 @@ function HomePage() {
   const [isSuccessOpen, setIsSuccessOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMessengerOpen, setIsMessengerOpen] = useState(false)
+  const [isMessengerHintVisible, setIsMessengerHintVisible] = useState(false)
   const [isPhoneCopied, setIsPhoneCopied] = useState(false)
   const [autoplayVideoKeys, setAutoplayVideoKeys] = useState({})
   const heroVideoFrameRef = useRef(null)
@@ -123,6 +124,14 @@ function HomePage() {
 
     Object.values(videoRefs.current).forEach((node) => observer.observe(node))
     return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsMessengerHintVisible(true)
+    }, 10000)
+
+    return () => window.clearTimeout(timer)
   }, [])
 
   return (
@@ -271,7 +280,7 @@ function HomePage() {
         <section className="section contact-section">
           <h2>Оставьте заявку</h2>
           <p className="contact-promo">
-            Заполните форму и получите скидку 20% по промокоду <span className='pulse-effect'>ТИТАН20</span>
+            Заполните форму и получите скидку 20% по промокоду <span className='pulse-effect'>«ТИТАН20»</span>
           </p>
           <LeadForm source="main-form" />
         </section>
@@ -362,9 +371,38 @@ function HomePage() {
             Открыть в Яндекс Картах
           </a>
         </div>
+        <Link className="privacy-link" to="/privacy-policy">
+          Политика конфиденциальности
+        </Link>
       </footer>
 
+      {isMessengerOpen && (
+        <button
+          type="button"
+          className="messenger-dim"
+          aria-label="Закрыть мессенджеры"
+          onClick={() => setIsMessengerOpen(false)}
+        />
+      )}
+
       <div className="messenger-widget">
+        {isMessengerHintVisible && (
+          <div className="messenger-hint" role="status" aria-live="polite">
+            <button
+              type="button"
+              className="messenger-hint__close"
+              aria-label="Закрыть подсказку"
+              onClick={() => setIsMessengerHintVisible(false)}
+            >
+              ×
+            </button>
+            <div className="messenger-hint__avatar" aria-hidden="true" />
+            <div>
+              <strong>Анна</strong>
+              <p>Здравствуйте! Напишите мне, если у Вас появятся вопросы.</p>
+            </div>
+          </div>
+        )}
         {messengerLinks.map((messenger, index) => (
           <a
             key={messenger.id}
@@ -372,17 +410,20 @@ function HomePage() {
             href={messenger.href}
             target="_blank"
             rel="noreferrer"
-            aria-label={messenger.label}
+            aria-label={messenger.label} 
             style={{ '--item-index': index }}
           >
-            {messenger.label}
+            <img src={messenger.icon} alt="" className="messenger-icon" />
           </a>
         ))}
         <button
           type="button"
           className="messenger-toggle"
           aria-label="Открыть мессенджеры"
-          onClick={() => setIsMessengerOpen((prev) => !prev)}
+          onClick={() => {
+            setIsMessengerHintVisible(false)
+            setIsMessengerOpen((prev) => !prev)
+          }}
         >
           {isMessengerOpen ? '×' : '💬'}
         </button>

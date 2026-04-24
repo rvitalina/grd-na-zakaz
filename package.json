@@ -2,16 +2,17 @@
   "name": "gard-systems-landing",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://rvitalina.github.io/grd-na-zakaz/",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"npm:dev:client\" \"npm:dev:server\"",
-    "dev:client": "vite --host 0.0.0.0 --port 5173",
-    "dev:server": "node --watch server/index.js",
+    "dev": "vite",
     "tunnel": "ngrok http 5173",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "concurrently": "^9.2.1",
@@ -32,6 +33,7 @@
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.5.2",
+    "gh-pages": "^6.3.0",
     "globals": "^17.4.0",
     "ngrok": "^5.0.0-beta.2",
     "vite": "^5.4.19"

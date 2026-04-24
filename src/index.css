@@ -161,6 +161,8 @@ a {
 
 .hero-cta-btn {
   margin-top: 40px;
+  padding: 12px 20px;
+  font-size: 1.1rem;
 }
 
 .promo-note {
@@ -231,6 +233,8 @@ button:hover,
 
 .about p {
   max-width: 820px;
+  font-size: clamp(19px, 2.2vw, 24px);
+  line-height: 1.65;
 }
 
 .best-price {
@@ -358,13 +362,17 @@ button:hover,
 
 .reason-card {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 
 .reason-card .icon {
   font-size: 26px;
   line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reason-card p {
@@ -557,6 +565,21 @@ a.site-footer__line:hover {
   text-underline-offset: 3px;
 }
 
+.privacy-link {
+  display: block;
+  width: fit-content;
+  margin: 18px auto 28px;
+  color: var(--titan-navy);
+  background-color:#000;
+  font-weight: 700;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+}
+
+.privacy-link:hover {
+  border-bottom-color: var(--titan-red);
+}
+
 .copy-button {
   background: transparent; /* Прозрачный фон */
   border: 1px solid #FF0000; /* Красный контур */
@@ -647,6 +670,75 @@ a.site-footer__line:hover {
   place-items: center;
 }
 
+.messenger-hint {
+  position: absolute;
+  right: 0;
+  bottom: 72px;
+  width: min(460px, calc(100vw - 28px));
+  background: #fff;
+  border: 2px solid #81d8de;
+  border-radius: 20px;
+  padding: 14px 16px;
+  display: flex;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.messenger-hint::after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  bottom: -12px;
+  width: 18px;
+  height: 18px;
+  background: #fff;
+  border-right: 2px solid #81d8de;
+  border-bottom: 2px solid #81d8de;
+  transform: rotate(45deg);
+}
+
+.messenger-hint__close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: transparent;
+  color: #c5c8cc;
+  padding: 0;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.messenger-hint__avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f5d7c2, #b3825d);
+  flex-shrink: 0;
+}
+
+.messenger-hint strong {
+  display: block;
+  font-size: 18px;
+  color: #000;
+  line-height: 1.1;
+}
+
+.messenger-hint p {
+  margin: 4px 0 0;
+  color: #2f3a46;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.messenger-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 65;
+  background: rgba(0, 0, 0, 0.42);
+  border: 0;
+  padding: 0;
+}
+
 .messenger-toggle,
 .messenger-link {
   grid-area: 1 / 1;
@@ -684,44 +776,60 @@ a.site-footer__line:hover {
 }
 
 .messenger-link {
-  background: transparent;
-  color: #fff;
-  font-size: 11px;
-  text-transform: none;
-  text-align: center;
-  line-height: 1.1;
-  padding: 0 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  
+  /* Центровка */
+  display: flex;
+  align-items: center;    /* Центр по вертикали (ось Y) */
+  justify-content: center; /* Центр по горизонтали (ось X) */
+  
+  /* Убираем лишние отступы, которые могли остаться */
+  padding: 0; 
+  margin: 0;
+  overflow: hidden; /* Чтобы ничего не вылезало за края круга */
+
+  /* Ваша анимация */
   opacity: 0;
   pointer-events: none;
   transform: translateY(0) scale(0.65);
-  transition:
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.35s ease;
-  transition-delay: calc(var(--item-index) * 70ms);
-  z-index: 1;
+  transition: all 0.4s ease;
 }
 
+/* Стили для иконки внутри */
+.messenger-icon {
+  width: 24px;           /* Размер самой иконки */
+  height: 24px;
+  object-fit: contain;
+  /* Если у ваших иконок белый фон, можно попробовать: */
+  /* border-radius: 4px; */
+}
+
+/* Состояние при открытии (ваша логика вылета) */
 .messenger-link.is-open {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(calc((var(--item-index) + 1) * -64px)) scale(1);
+  /* Добавляем translateX(-50%), чтобы круги стояли ровно по центру над основной кнопкой */
+  transform: translateX(-50%) translateY(calc((var(--item-index) + 1) * -56px)) scale(1);
 }
 
-.messenger-max {
-  background: #ff2d92;
+.messenger-link img {
+  width: 28px; 
+  height: 28px;
+  object-fit: contain;
+  /* Убирает белый фон, если он идеально белый */
+  mix-blend-mode: multiply; 
+  /* Немного прозрачности, чтобы иконка мягче входила в цвет */
+  filter: brightness(1.1); 
 }
 
-.messenger-telegram {
-  background: #2aabee;
-}
 
-.messenger-vk {
-  background: #8b5cf6;
-}
-
-.messenger-whatsapp {
-  background: #25d366;
-}
+/* Ваши цвета — они отличные, оставляем */
+.messenger-max { background: #ff2d92; }
+.messenger-telegram { background: #2aabee; }
+.messenger-vk { background: #8b5cf6; }
+.messenger-whatsapp { background: #25d366; }
 
 @keyframes messengerRipple {
   0% {
@@ -858,6 +966,17 @@ a.site-footer__line:hover {
   color: var(--titan-navy);
   font-family: var(--font-display);
   line-height: 1.2;
+}
+
+.privacy-page {
+  padding: clamp(22px, 4vw, 48px);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.privacy-page h1 {
+  margin-top: 40px;
+  color: var(--titan-navy);
 }
 
 .room-gallery {

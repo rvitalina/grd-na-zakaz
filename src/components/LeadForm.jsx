@@ -68,7 +68,7 @@ function LeadForm({ source = 'form', onSuccess }) {
             name: formData.name,
             phone: formData.phone,
             source,
-            _subject: `Новая заявка (${source})`,
+            _subject: `Новая заявка с сайта(${source})`,
           }),
         })
         if (!fallbackResponse.ok) throw new Error('Ошибка отправки.')

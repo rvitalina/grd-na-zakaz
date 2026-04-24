@@ -1,9 +1,14 @@
+import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { roomCards } from '../data'
 
 function RoomPage() {
   const { roomSlug } = useParams()
   const room = roomCards.find((item) => item.slug === roomSlug)
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+  }, [roomSlug])
 
   if (!room) {
     return (
