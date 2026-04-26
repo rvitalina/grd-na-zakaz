@@ -5,6 +5,7 @@ import { Autoplay, Navigation } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import titanLogo from '../assets/titan-gs-logo.png'
+import photoDevushki from '../../public/images/photo_devushki.png'
 import LeadForm from '../components/LeadForm'
 import {
   advantages,
@@ -16,7 +17,7 @@ import {
   reasons,
   roomCards,
   showcaseVideos,
-} from '../data'
+} from '../data.jsx'
 
 function HomePage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -396,14 +397,16 @@ function HomePage() {
             >
               ×
             </button>
-            <div className="messenger-hint__avatar" aria-hidden="true" />
+            <div className="messenger-hint__avatar" aria-hidden="true">
+              <img src={photoDevushki} alt="" />
+            </div>
             <div>
               <strong>Анна</strong>
               <p>Здравствуйте! Напишите мне, если у Вас появятся вопросы.</p>
             </div>
           </div>
         )}
-        {messengerLinks.map((messenger, index) => (
+        {/* {messengerLinks.map((messenger, index) => (
           <a
             key={messenger.id}
             className={`messenger-link messenger-${messenger.id} ${isMessengerOpen ? 'is-open' : ''}`}
@@ -415,7 +418,28 @@ function HomePage() {
           >
             <img src={messenger.icon} alt="" className="messenger-icon" />
           </a>
-        ))}
+        ))} */}
+        {messengerLinks.map((messenger, index) => (
+    <a
+      key={messenger.id}
+      className={`messenger-link messenger-${messenger.id} ${isMessengerOpen ? 'is-open' : ''}`}
+      href={messenger.href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={messenger.label}
+      style={{ '--item-index': index }}
+    >
+      <div className="messenger-icon-wrapper">
+        {/* Рендерим SVG, если он есть */}
+        {messenger.iconSvg && messenger.iconSvg}
+
+        {/* Рендерим PNG, если он есть */}
+        {messenger.iconPng && (
+          <img src={messenger.iconPng} alt="" className="messenger-icon-png" />
+        )}
+      </div>
+    </a>
+  ))}
         <button
           type="button"
           className="messenger-toggle"

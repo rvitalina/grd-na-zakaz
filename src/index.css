@@ -570,7 +570,7 @@ a.site-footer__line:hover {
   width: fit-content;
   margin: 18px auto 28px;
   color: var(--titan-navy);
-  background-color:#000;
+  background-color:#ffffff;
   font-weight: 700;
   border-bottom: 2px solid transparent;
   padding-bottom: 2px;
@@ -714,6 +714,15 @@ a.site-footer__line:hover {
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, #f5d7c2, #b3825d);
   flex-shrink: 0;
+  /* Добавляем это, чтобы картинка не выходила за границы круга */
+  overflow: hidden; 
+}
+
+.messenger-hint__avatar img {
+  width: 100%;       /* Растягиваем на всю ширину родителя */
+  height: 100%;      /* Растягиваем на всю высоту родителя */
+  object-fit: cover; /* Ключевое свойство: обрезает лишнее, сохраняя пропорции лица */
+  display: block;    /* Убираем лишние отступы снизу */
 }
 
 .messenger-hint strong {
@@ -739,28 +748,53 @@ a.site-footer__line:hover {
   padding: 0;
 }
 
+.messenger-widget {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+}
+
+/* Container — все дочерние элементы позиционируются относительно него */
+.messenger-grid {
+  position: relative;
+  width:  54px;
+  height: 54px;
+}
+
+/* ── Toggle button ── */
 .messenger-toggle,
 .messenger-link {
-  grid-area: 1 / 1;
-  width: 54px;
+  width:  54px;
   height: 54px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
+/* ── Toggle button — всегда на месте, поверх всего ── */
 .messenger-toggle {
-  position: relative;
+  position: relative;   /* нужен для псевдоэлементов (ripple) */
   font-size: 24px;
+  font-weight: 800;
   padding: 0;
-  text-transform: none;
+  border: none;
+  cursor: pointer;
   z-index: 2;
   overflow: visible;
+  background: #ef1822;
+  color: #fff;
+  text-transform: none;
+  transition: transform 0.3s ease;
 }
 
+.messenger-toggle:hover {
+  transform: scale(1.08);
+}
+
+/* Ripple rings */
 .messenger-toggle::before,
 .messenger-toggle::after {
   content: '';
@@ -769,67 +803,63 @@ a.site-footer__line:hover {
   border: 2px solid rgba(239, 24, 34, 0.45);
   border-radius: 50%;
   animation: messengerRipple 2.2s ease-out infinite;
+  pointer-events: none;
 }
-
 .messenger-toggle::after {
   animation-delay: 0.9s;
 }
 
+/* ── Individual messenger links ── */
 .messenger-link {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  
-  /* Центровка */
-  display: flex;
-  align-items: center;    /* Центр по вертикали (ось Y) */
-  justify-content: center; /* Центр по горизонтали (ось X) */
-  
-  /* Убираем лишние отступы, которые могли остаться */
-  padding: 0; 
-  margin: 0;
-  overflow: hidden; /* Чтобы ничего не вылезало за края круга */
+  /*
+    Абсолютное позиционирование: левый край совпадает с левым краем
+    .messenger-grid (0px), ширина та же 54px.
+    Так translateY двигает только по вертикали — никакого горизонтального сдвига.
+  */
+  position: absolute;
+  top:  0;
+  left: 0;
 
-  /* Ваша анимация */
+  text-decoration: none;
+  padding: 0;
+  overflow: hidden;
+
+  /* Скрытое / свёрнутое состояние */
   opacity: 0;
   pointer-events: none;
-  transform: translateY(0) scale(0.65);
-  transition: all 0.4s ease;
+  transform: translateY(0) scale(0.5);
+  transition:
+    opacity   0.35s ease,
+    transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition-delay: calc(var(--item-index, 0) * 0.05s);
 }
 
-/* Стили для иконки внутри */
-.messenger-icon {
-  width: 24px;           /* Размер самой иконки */
-  height: 24px;
-  object-fit: contain;
-  /* Если у ваших иконок белый фон, можно попробовать: */
-  /* border-radius: 4px; */
-}
-
-/* Состояние при открытии (ваша логика вылета) */
+/* Открытое состояние — летит строго вверх */
 .messenger-link.is-open {
   opacity: 1;
   pointer-events: auto;
-  /* Добавляем translateX(-50%), чтобы круги стояли ровно по центру над основной кнопкой */
-  transform: translateX(-50%) translateY(calc((var(--item-index) + 1) * -56px)) scale(1);
+  /*
+    64px = 54px (высота кнопки) + 10px (зазор между иконками)
+    index 0 → -64px, index 1 → -128px, и т.д.
+  */
+  transform: translateY(calc((var(--item-index, 0) + 1) * -64px)) scale(1);
+  transition-delay: calc(var(--item-index, 0) * 0.06s);
 }
 
-.messenger-link img {
-  width: 28px; 
+/* Icon image inside each link */
+.messenger-link .messenger-icon {
+  width:  28px;
   height: 28px;
   object-fit: contain;
-  /* Убирает белый фон, если он идеально белый */
-  mix-blend-mode: multiply; 
-  /* Немного прозрачности, чтобы иконка мягче входила в цвет */
-  filter: brightness(1.1); 
+  display: block;
+  flex-shrink: 0;
 }
 
-
-/* Ваши цвета — они отличные, оставляем */
-.messenger-max { background: #ff2d92; }
-.messenger-telegram { background: #2aabee; }
-.messenger-vk { background: #8b5cf6; }
-.messenger-whatsapp { background: #25d366; }
+/* ── Brand colours ── */
+.messenger-max       { background: #bc2dff; }
+.messenger-telegram  { background: #2aabee; }
+.messenger-vk        { background: #0077ff; }
+.messenger-whatsapp  { background: #25d366; }
 
 @keyframes messengerRipple {
   0% {

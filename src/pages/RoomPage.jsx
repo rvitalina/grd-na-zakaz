@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { roomCards } from '../data'
+import { roomCards } from '../data.jsx'
 
 function RoomPage() {
   const { roomSlug } = useParams()
